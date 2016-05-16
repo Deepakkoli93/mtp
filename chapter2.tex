@@ -24,11 +24,13 @@ Various virtualisation technologies are as follows:-
 There are several advantages of Virtualisation. Major ones are stated as:- 
 
 \begin{itemize}
-    \item \textbf{Save Expenditure}
-     \item \textbf{Save Assets}
-      \item \textbf{Improved Disaster Recovery}
-       \item \textbf{Utilisation of Resources}
-        \item \textbf{Centralisation of Management}
+    \item \textbf{Save Expenditure} Network virtualisation gives consolidation of the resources. Therefore, less hardware is required hence it saves both capex and opex. The percentage through which utilisation of the resources can be increased is nearly 80\%
+     \item \textbf{Provision of Network much faster} It offers faster provision of the network topologies. Unlike hardware assembly, ready templates can be designed for faster provision. They can be used when requested
+     
+      \item \textbf{Improved Disaster Recovery} The abstraction provided by the virtualisation enables us to use any commodity hardware, which makes possible to use cheaper hardware to built backup facility which is rarely used. Hence reduction in overall cost.
+      
+       \item \textbf{Utilisation of Resources} It has been found that on an average most of the systems operate at less than 15\% of their full capacity. Virtualisation increases this efficiency by making utilisation upto 80\% of the full capacity
+        \item \textbf{Centralisation of Management} Administration becomes easy with virtualisation as it comes with the centralised and remote management
 \end{itemize}
 
 
@@ -38,6 +40,29 @@ The purpose of virtualisation is to simulate hardware services in software. All 
 When a network is virtualised, it creates a logical software-based view of the actual physical network and the functionalities of the network hardware boxes like routers, switches, etc. are implemented in the software itself. In this case physical device is only responsible for forwarding the packets, acting like a dumb switch, and all the routing and forwarding decisions are taken by the software.
 
 Azodolmolky et. al. \cite{azodolmolky2013sdn} have studied different implementation of virtualization technologies and the table below summarizes the pro and cons of these technologies.
+
+Traditionally, network virtualization has been implemented through the vir-
+tual segments using VLANs, which are limited to 4096 segments (VLANs) and
+therefore not really scalable.
+We can categorise differenct techniques of network virtualisaton based on architechture listed below
+
+\begin{enumerate}
+    \item hypervisor having dumb virtual switch plus normal physical switch
+    \item hypervisor having dumb virtual switch with intelligent physical switch
+    \item intelligent virtual switch plus typical (L2/L3) physical switch
+\end{enumerate}
+
+Table 2.1 lists different Network virtualisation Technologies. We will discuss some of these technologies. 
+\subsection{VLAN based virtualisation}
+This is the traditional method of network virtualisation. In this technology, virtual segments are created which act as actual LAN segments. These offer applications like isolation and security etc. These are limited to 4096 and hence they are not scalable.
+
+\subsection{VM-aware networking}
+VM-aware VLAN based implementation scales better where the basic idea is
+that the VLAN list on the physical switch to the hypervisor link is dynamically
+adjusted based on the server need.
+
+\subsection{VCDNI} Its principle is based on a virtual distributed switch, isolated from the rest of the network. It is controlled by vCloud director and used MAC-in-MAC encapsulation instead of VLAN. Therefore VM MAC address not visible in physical network. Here 4k limitation of VLANs is no more intact because of longer header in vCDNI protocol.
+
 
 \begin{table}
 \centering
@@ -112,12 +137,69 @@ The basic actions in an OpenFlow table are as follows:
     \item Flood: Send along the minimum spanning tree except the incoming interface.
 \end{itemize}
 
+\subsection{SDN Controller}
+SDN controller is a software which communicated to the hardware switches using the above mentioned OpenFlow protocols. A controller creates rules as to how a packet must be forwarded and installs these rules in hardware switches. A switch then simply forwards the packets according to the rules set up by the controller.
+
+Now we briefly give a descrption of different SDN controller that are available today.
+
+\subsubsection{Nox}
+Nox was the first SDN controller that was developed. It is a C++ based controller and many other controller like pox have been developed over it. It is not in development now.
+
+\subsubsection{Pox}
+Pox is developed over Nox controller. It is a simple to use python based controller which can be used for rapid protyping of any SDN application.
+
+\subsubsection{Ryu}
+Ryu is a component based SDN framework with a well defined API. It supports various protocols other that OpenFLow like Netconf, OF-config.
+
+\subsubsection{OpenDaylight}
+OpenDaylight is an open source Java based project under linux distribution. It has a huge community and contributors to its code base. Although a bit difficult to learn, it has a wide variety of features and is also used for commercial products.
+
+\subsubsection{Floodlight}
+Floodlight is also a Java based controller that we have used for developing our application. It has a growing community of developers and provides a rich set of northbound and southbound APIs to create an application module. 
 
 \section{Baadal: IIT Delhi's Private Cloud}
+"Baadal is a cloud orchestration and virtualization management software developed at IITD that can work with multiple virtualization technologies like KVM, Xen, and VMWare" \cite{baadaliitd}. Its main features include
+\begin{itemize}
+    \item Dynamic resource scheduling and power management
+    \item An integrated work flow system for request of virtual machines
+    \item Virtual machines can be powered on, powered off, resumed or suspended as per user requirement.
+    \item Different costs for resources for VMs depending upon the requirement.
+\end{itemize}
 
+Currently Baadal is deployed in IITD on 48 blade servers with 500 cores and 50 TB of storage (which is virtualized storage based on Network attached storage or NAS). Out of these over 60 machines are being used for high performance computing in the campus.
+
+According to \cite{baadaliitdwebpage} the technical specification of baadal are as follows:
+\begin{itemize} 
+    \item 32 blade servers with 2x6 core Intel(R) Xeon(R) CPU X5670 @ 2.93GHz and 16 GB RAM.
+    \item 16 blade servers with 2x4 core Intel(R) Xeon(R) CPU E5540 @ 2.53GHz and 12 GB RAM.
+    \item A 10Gbps ethernet backbone.
+    \item 50 TB of virtualized storage on a NetApp 3210V NAS and HP EVA6400 SAN with FC disks.
+    \item Open source virtualization technology based on KVM.
+\end{itemize}
+
+\subsection{Baadal sandbox}
+To facilitate easy development and testing of application for use in Baadal deployment this sandbox environment is provided. It simulates the actual baadal architecture and configuration in a single machine without using any more physical hosts. Once an application is tested on this sandbox then it can be ported on the actual Baadal with little modifications.
+
+\subsection{Netmap}
+Netmap is a framework for high speed packet I/O. It is implement as a single kernel module and supports access to network cards, host stack, virtual ports and netmap pipes. 
+It uses optimizations like batch processing of packets and using a circular queue as both input and output buffers. This reduces packet processing delays and eliminates copying delays.
 \section{Related Work}
 
 \subsection{Data Center architectures}
+
+\subsection{SDN based Scheme for Virtual network management}
+As we have seen in virtualisation services like storage, network, computing are provided using cloud. It required usage of virtual network. As part of this project, we suggested some of the changes in virtual network management schemes. But before moving onto the changes suggested and implemented we should have an idea of management schemes for the virtual network.
+\begin{itemize}
+    \item Three important aspects of management scheme are how to transfer virtual network packets, tenant isolation and adaptability of virtual network to topology changes.
+    \item Considering these three factors management scheme can be divided into two types. One is \textbf{traditional bridging} which binds VMs NIC with physical NIC on a virtual bridge and transfer VMs packets via the physical NICs. This has advantage of good performance but it lacks flexibility.
+    The other type based on \textbf{overlay network} which encapsulates the virtual network packets into the hosts packets. It has advantage of flexibility but it leads to performance loss.
+    \item Using above two traditional methods we have to make a trade off between flexible management and network performance. But SDN allows us to accomplish management logic conveniently which helps to  achieve both flexibility and performance improvement.
+    \item We have designed management scheme for vlan solution inspired from a scheme known as FENet.\cite{liu2014fenet}. FENet is SDN based approach for management scheme, creates virtual network upon devices which support OpenFlow protocol and SDN controller programs are developed to manage them.
+    \item It provides improved network utilisation and lower latency than the scheme based on traditional bridging.
+    \item Nicira Network virtualisation platform (NVP) provides a solution which combines idea of SDN and IP tunnelling. One of the other solution proposed for tenant isolation based on SDN, is conditional on the fact that hosts are in the layer 2 network.\cite{nunes2013virtualized}. It replaces the packet destination destination MAC address with the host MAC address while the destination IP address is still the VM's so that the packet routing does not happen across the physical network.
+\end{itemize}
+
+\subsubsection{}
 
 \subsection{Online traffic aware virtual machine placement in data center networks}
 Dias et. al.\cite{dias2012online} have presented a virtual machine placement (VMP) algorithm to reallocate virtual machines in the data center servers based on the current traffic matrix, CPU, and memory usage. VMP takes into account the current data center work load, CPU and memory usage of virtual machines to avoid bottlenecks. The basic idea is to consolidate virtual machines that have correlated services. VMP operation is divided into four parts:
@@ -134,3 +216,12 @@ In the simulations they have shown that their method is scalable to big data cen
 Jiang et. al. \cite{jiang2012joint} have proposed a solution to the problem of network load balancing by means of a joint tenant placement and route selection by exploiting multipath routing capability and dynamic virtual machine migration. They have proposed an offline algorithm that solves a static problem given a network snapshot, and an online solution for a dynamic environment with changing traffic. They have leveraged the technique of Markov approximation what required a very small number of virtual machine migrations. In simulations done by them they have evaluated the performance of online algorithms with real workload obtained from large computing clusters and have shown that their algorithm incurs the minimum performance cost in comparison to all other tested algorithms.
 
 Biran et. al. \cite{biran2012stable} have also studied this problem and said that VM placement has to carefully consider the aggregate resource consumption of co-located VMs in order to obey service level agreements at lower possible cost. Also, the traffic patterns are not stable in nature and vary over a period of time. They have addressed this problem by trying to allocate a placement that not only satisfies the predicted communication demand but also is resilient to demand time-variations. They have defined the problem as a min cut ratio-aware VM placement which is NP-hard in general but they have employed several heuristics to solve it. Through their simulations they have shown that the placements based on their algorithm increase data scalability, while being able to support time-varying traffic demands with a reduced number of dropped packets. 
+
+\subsection{Network Function Virtualization}
+Middleboxes like proxy servers, firewall, NAT, etc. have become indispensable for today's networks. However, they come with problems like being expensive, difficult to manage and scale. Many of these problems arise because of the fact that they are hardware based devices. As a solution to this problem a recent trend toward Network Function Virtualization has started to turn these middleboxes into software-based entities.
+
+Matins et. al. \cite{martins2014clickos} have introduced a virtualized software middlebox platform called ClickOS. It is based on Xen sice it provides para-virtualized VMs to build a low delay and high throughput platform. Through their evaluation they have shown that ClickOS can hundreds of middleboxes on commodity hardware, offers millions of packet per seconds processing and provide low packet delays. They have shown that even low-end servers can forward packets at 30Gbps. 
+
+Ge et. al. \cite{ge2014openanfv} have built a consolidated framework OpenANFV for speeding up the performances of virutalized middleboxes. When a middlebox is needed its resources are orchestrated by OpenStack and is instantiated as a virtual machines on a common platform. They have a Network Functions Acceleration Platform (NFAP) which provides a FPGA card which accelerates various functions. In their evaluations they have shown orders of magnitude of improvement in throughput in virtualized middleboxes like deep  packet inspection, network address translation, etc. using NFAP as compared to without NFAP.
+
+Han et. al. \cite{han2015network} have  explained the requirements, architectural framework and use cases for NFV and have also discussed the challenges in this area. They argue that although virtualization impacts performance negatively in terms of throughput and latency, these effect must be kept to a minimum. Migrating from the existing architecture to NFV based solution is also a major hurdle that network carriers face. They have presented a architectural framework for NFV which includes four components - orchestrator, VNF manager, virtualization layer and virtualized infrastructure manager. They have also given various use cases for NFV like virtualization of cellular base station, virtualization of cellular core network and virtualization of home network.

@@ -1,0 +1,47 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Separation of data and control planes \relax }}{8}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces OpenFlow\relax }}{9}{figure.2.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of Baadal Architecture\relax }}{19}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Physical host architecture\relax }}{20}{figure.3.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Login to the baadal sandbox server\relax }}{21}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Different VMs running in the sandbox\relax }}{22}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Output of ifconfig command on sandbox server\relax }}{22}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Login in the baadal controller\relax }}{23}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces ifconfig showing 255 fake bridges inside the controller\relax }}{23}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Web2py Processes Running inside controller\relax }}{24}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Login inside the nat\relax }}{24}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces ifconfig showing 255 fake bridges inside the NAT\relax }}{25}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Login inside host 10.0.0.6\relax }}{25}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Network configuration of host 10.0.0.6\relax }}{26}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Login inside host 10.0.0.7\relax }}{26}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Network configuration of host 10.0.0.7\relax }}{27}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces VMs shutdown status inside host 10.0.0.6\relax }}{28}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Starting VMs inside host 10.0.0.6\relax }}{28}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Running VMs inside host 10.0.0.6\relax }}{28}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces VMs shutdown status inside host 10.0.0.7\relax }}{28}{figure.4.16}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Starting VMs inside host 10.0.0.7\relax }}{29}{figure.4.17}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Running VMs inside host 10.0.0.7\relax }}{29}{figure.4.18}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Console output for VM 10.0.4.25 after running virt-viewer\relax }}{30}{figure.4.19}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Floodlight Architecture\relax }}{32}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Setup of Baadal Sandbox Installed \relax }}{33}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Routing in Same Host and Same VLAN\relax }}{34}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Routing in Same Host and Same VLAN\relax }}{35}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Routing in Same Host and Different VLAN\relax }}{36}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Routing in Different Host and Different VLAN\relax }}{37}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Routing in Same Host and Same VLAN using SDN\relax }}{43}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Routing in Same Host and different VLAN using SDN\relax }}{44}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Routing in Different Host and Different VLAN using SDN\relax }}{45}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Routing in Different Host and Same VLAN using SDN\relax }}{46}{figure.5.10}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Bandwidth comparison of traditional and SDN metworking in Same host Same VLan\relax }}{53}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Bandwidth comparison of traditional and SDN metworking in Different host Same VLan\relax }}{54}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Bandwidth comparison of traditional and SDN networking in Same host Different VLan\relax }}{55}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Bandwidth comparison of traditional and SDN metworking in Different host Different VLan\relax }}{56}{figure.6.4}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Heatmap showing network traffic between virtual machines\relax }}{57}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Heatmap showing network traffic between different hosts before VM migration\relax }}{58}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Heatmap showing network traffic between different hosts after VM migration\relax }}{59}{figure.6.7}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Bandwidth vs time as two VMs are being consolidated on a same host\relax }}{59}{figure.6.8}
