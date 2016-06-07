@@ -6,7 +6,7 @@
 In this section, we will present the basic concepts necessary for understanding the Network virtualisation and the work that we will be presenting afterwards. We will start with concept of Virtualisation in general, subsequently moving onto the network virtualisation, software defined networking (SDN), virtual network management schemes in data centers and other related things.
 
 \section{Virtualisation}
-Virtualisation is the process of creating logical computing resources from available physical resources. It provides a layer of abstraction between workloads and the underlying physical hardware by means of virtualisation software. The virtualised computing resources such as CPUs, storage, network, disk I/O, memory are all pooled and provisioned to workloads without regard for physical location within a data centre.
+Virtualisation is the process of creating logical computing resources from available physical resources. It provides an abstraction layer between workloads and the underlying physical hardware by means of virtualisation software. The virtualised computing resources such as CPUs, storage, network, disk I/O, memory are pooled. These are then provisioned to workloads without worrrying about physical location within a data centre.
 
 It also provides encapsulation so that workload can access only the resources assigned to them. In this way several independent workloads can be supported in a virtualised system.
 
@@ -14,9 +14,9 @@ It also provides encapsulation so that workload can access only the resources as
 Various virtualisation technologies are as follows:-
 
 \begin{itemize}
-    \item \textbf{Server Virtualisation} - it abstracts the server physical computing resources from logical entities that are created. The user specifies the number of CPUs he requires and it is the virtualisation layer that maps it to the actual physical hardware. It increases the server utilisation.
+    \item \textbf{Server Virtualisation} - it provides abstraction to the server physical computing resources from logical resources that are created. The user specifies the number of CPUs he requires and it is the virtualisation layer that maps it to the actual physical hardware. It increases the server utilisation.
     \item \textbf{Storage Virtualiastion} - it abstracts and pools the storage physical resources among workloads, thereby increasing storage utilisation. The user can specify the number and size of hard disk as part of parameters of it.
-    \item \textbf{Network Virtualisation} - it allows to have multiple small logical network from large physical network and provision of large logical network from these multiple small networks. It helps network administrators to improve network traffic control, organisation and security.
+    \item \textbf{Network Virtualisation} - it allows to have multiple small logical network from large physical network and provision of large logical network from these multiple small networks. Network administrators can improve network traffic control, and security using network virtualisation.
 \end{itemize}
 
 \subsection{Benefits of Virtualisation}
@@ -42,14 +42,14 @@ When a network is virtualised, it creates a logical software-based view of the a
 Azodolmolky et. al. \cite{azodolmolky2013sdn} have studied different implementation of virtualization technologies and the table below summarizes the pro and cons of these technologies.
 
 Traditionally, network virtualization has been implemented through the vir-
-tual segments using VLANs, which are limited to 4096 segments (VLANs) and
-therefore not really scalable.
+tual segments called VLANs. But these are limited in number to 4096 and
+therefore scability is an issue.
 We can categorise differenct techniques of network virtualisaton based on architechture listed below
 
 \begin{enumerate}
-    \item hypervisor having dumb virtual switch plus normal physical switch
-    \item hypervisor having dumb virtual switch with intelligent physical switch
-    \item intelligent virtual switch plus typical (L2/L3) physical switch
+    \item Hypervisor having dumb virtual switch plus normal physical switch
+    \item Hypervisor having dumb virtual switch with intelligent physical switch
+    \item intelligent virtual switch is provided with typical (L2/L3) physical switch
 \end{enumerate}
 
 Table 2.1 lists different Network virtualisation Technologies. We will discuss some of these technologies. 
@@ -57,7 +57,7 @@ Table 2.1 lists different Network virtualisation Technologies. We will discuss s
 This is the traditional method of network virtualisation. In this technology, virtual segments are created which act as actual LAN segments. These offer applications like isolation and security etc. These are limited to 4096 and hence they are not scalable.
 
 \subsection{VM-aware networking}
-VM-aware VLAN based implementation scales better where the basic idea is
+VM-aware VLAN based implementation scales better. Here the basic idea is
 that the VLAN list on the physical switch to the hypervisor link is dynamically
 adjusted based on the server need.
 
@@ -88,7 +88,7 @@ Software defined networking is referred to as the splitting of the network plane
 \subsection{Need for SDN}
 Software defined networking is a framework which allows network programmers to automatically manage and control a large number of network devices, services, topology, traffic paths using high level languages and APIs. SDN pulls out the abstractions and allows one to look at the bigger picture. 
 \begin{itemize}
-    \item Virtualization: Use of network resources without worrying about where it is physically located.
+    \item Virtualization: It is use of network resources without worrying about where it is physically located.
     \item Orchestration: Ability to control and manage thousands of devices with a few commands.
     \item Programmable: Ability to change behaviour dynamically without the need to suspend services.
     \item Visibiltiy: It allows the monitoring of resources and figure is the network is disrupted or the presence of any faults.
@@ -120,27 +120,27 @@ SDN consists of two separate planes which are data plane and control plane. In t
 \end{figure}
 
 \subsection{OpenFlow}
-OpenFlow is a software defined networking standard which allows network controllers to determine the path of network packets across a network of switches. It is a communication interface between the control plane and data plane of an SDN architecture. It allows direct access to and manipulation of the forwarding plane of network devices such as switches and routers, both physical and virtual. It can also be thought as a protocol used in switching devices and controllers interface.
+OpenFlow is a software defined networking standard.It allows network programmers to determine the path of network packets through a network of switches. It is a communication interface between the control plane and data plane of an SDN architecture. It allows direct access to as well as manipulation of the forwarding plane of network devices such as switches, routers, both physical and virtual. It can also be thought as a protocol for switches and controller interfaces.
 
 \subsubsection{Working of OpenFlow}
 OpenFlow manages the traffic (network flows) by manipulating a flow table at switches. Instructions are stored in flow tables. When a packet arrives at a switch, it matches the header fields with flow entries in a flow table. If any entry is matched, it performs indicated actions and updates the counters. If, however, it is not matches then the switch asks the controller by sending a message with the packet header.
 
-\subsubsection{OpenFlow table}
-The basic actions in an OpenFlow table are as follows:
-\begin{itemize}
-    \item All: To all interfaces except the incoming interface.
-    \item Controller: Encapsulate the packet and send it to the controller.
-    \item Local: Send to its local networking stack
-    \item Table: Perform actions in the next flow table 
-    \item In\_port: Send the packet back to the input port.
-    \item Normal: Forward in accordance with the traditional ethernet.
-    \item Flood: Send along the minimum spanning tree except the incoming interface.
-\end{itemize}
+% \subsubsection{OpenFlow table}
+% The basic actions in an OpenFlow table are as follows:
+% \begin{itemize}
+%     \item All: To all interfaces except the incoming interface.
+%     \item Controller: Encapsulate the packet and send it to the controller.
+%     \item Local: Send to its local networking stack
+%     \item Table: Perform actions in the next flow table 
+%     \item In\_port: Send the packet back to the input port.
+%     \item Normal: Forward in accordance with the traditional ethernet.
+%     \item Flood: Send along the minimum spanning tree except the incoming interface.
+% \end{itemize}
 
 \subsection{SDN Controller}
 SDN controller is a software which communicated to the hardware switches using the above mentioned OpenFlow protocols. A controller creates rules as to how a packet must be forwarded and installs these rules in hardware switches. A switch then simply forwards the packets according to the rules set up by the controller.
 
-Now we briefly give a descrption of different SDN controller that are available today.
+Now we briefly give a description of different SDN controller that are available today.
 
 \subsubsection{Nox}
 Nox was the first SDN controller that was developed. It is a C++ based controller and many other controller like pox have been developed over it. It is not in development now.
@@ -152,7 +152,7 @@ Pox is developed over Nox controller. It is a simple to use python based control
 Ryu is a component based SDN framework with a well defined API. It supports various protocols other that OpenFLow like Netconf, OF-config.
 
 \subsubsection{OpenDaylight}
-OpenDaylight is an open source Java based project under linux distribution. It has a huge community and contributors to its code base. Although a bit difficult to learn, it has a wide variety of features and is also used for commercial products.
+OpenDaylight is an open source Java based project under Linux distribution. It has a huge community and contributors to its code base. Although a bit difficult to learn, it has a wide variety of features and is also used for commercial products.
 
 \subsubsection{Floodlight}
 Floodlight is also a Java based controller that we have used for developing our application. It has a growing community of developers and provides a rich set of northbound and southbound APIs to create an application module. 
@@ -183,10 +183,9 @@ To facilitate easy development and testing of application for use in Baadal depl
 \subsection{Netmap}
 Netmap is a framework for high speed packet I/O. It is implement as a single kernel module and supports access to network cards, host stack, virtual ports and netmap pipes. 
 It uses optimizations like batch processing of packets and using a circular queue as both input and output buffers. This reduces packet processing delays and eliminates copying delays.
+
+
 \section{Related Work}
-
-\subsection{Data Center architectures}
-
 \subsection{SDN based Scheme for Virtual network management}
 As we have seen in virtualisation services like storage, network, computing are provided using cloud. It required usage of virtual network. As part of this project, we suggested some of the changes in virtual network management schemes. But before moving onto the changes suggested and implemented we should have an idea of management schemes for the virtual network.
 \begin{itemize}
@@ -198,8 +197,6 @@ As we have seen in virtualisation services like storage, network, computing are 
     \item It provides improved network utilisation and lower latency than the scheme based on traditional bridging.
     \item Nicira Network virtualisation platform (NVP) provides a solution which combines idea of SDN and IP tunnelling. One of the other solution proposed for tenant isolation based on SDN, is conditional on the fact that hosts are in the layer 2 network.\cite{nunes2013virtualized}. It replaces the packet destination destination MAC address with the host MAC address while the destination IP address is still the VM's so that the packet routing does not happen across the physical network.
 \end{itemize}
-
-\subsubsection{}
 
 \subsection{Online traffic aware virtual machine placement in data center networks}
 Dias et. al.\cite{dias2012online} have presented a virtual machine placement (VMP) algorithm to reallocate virtual machines in the data center servers based on the current traffic matrix, CPU, and memory usage. VMP takes into account the current data center work load, CPU and memory usage of virtual machines to avoid bottlenecks. The basic idea is to consolidate virtual machines that have correlated services. VMP operation is divided into four parts:
@@ -215,7 +212,7 @@ In the simulations they have shown that their method is scalable to big data cen
 \subsection{Traffic Engineering}
 Jiang et. al. \cite{jiang2012joint} have proposed a solution to the problem of network load balancing by means of a joint tenant placement and route selection by exploiting multipath routing capability and dynamic virtual machine migration. They have proposed an offline algorithm that solves a static problem given a network snapshot, and an online solution for a dynamic environment with changing traffic. They have leveraged the technique of Markov approximation what required a very small number of virtual machine migrations. In simulations done by them they have evaluated the performance of online algorithms with real workload obtained from large computing clusters and have shown that their algorithm incurs the minimum performance cost in comparison to all other tested algorithms.
 
-Biran et. al. \cite{biran2012stable} have also studied this problem and said that VM placement has to carefully consider the aggregate resource consumption of co-located VMs in order to obey service level agreements at lower possible cost. Also, the traffic patterns are not stable in nature and vary over a period of time. They have addressed this problem by trying to allocate a placement that not only satisfies the predicted communication demand but also is resilient to demand time-variations. They have defined the problem as a min cut ratio-aware VM placement which is NP-hard in general but they have employed several heuristics to solve it. Through their simulations they have shown that the placements based on their algorithm increase data scalability, while being able to support time-varying traffic demands with a reduced number of dropped packets. 
+Biran et. al. \cite{biran2012stable} have also studied this problem and said that VM placement should consider the aggregate resource consumption of co-located VMs in order to obey service level agreements at lower possible cost. Also, the traffic patterns are not stable in nature and vary over a period of time. They have addressed this problem by trying to allocate a placement that not only satisfies the predicted communication demand but also is resilient to demand time-variations. They have defined the problem as a min cut ratio-aware VM placement which is NP-hard in general but they have employed several heuristics to solve it. Through their simulations they have shown that the placements based on their algorithm increase data scalability, while being able to support time-varying traffic demands with a reduced number of dropped packets. 
 
 \subsection{Network Function Virtualization}
 Middleboxes like proxy servers, firewall, NAT, etc. have become indispensable for today's networks. However, they come with problems like being expensive, difficult to manage and scale. Many of these problems arise because of the fact that they are hardware based devices. As a solution to this problem a recent trend toward Network Function Virtualization has started to turn these middleboxes into software-based entities.

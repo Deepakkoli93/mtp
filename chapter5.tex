@@ -1,20 +1,20 @@
 \chapter{Introduction to SDN based Application}
 
+We start this chapter with the introduction of the SDN controller Floodlight, using which we made policy control and load balancing application. We will see the sandbox setup to understand the networking without SDN and with SDN. The algorithm used in the policy control application for intervlan VMs is also explained.
 \section{Introduction to Floodlight}
 Floodlight is an open source java-based SDN controller and was the controller of choice for this project because of reasons such as - it supports switches which are OpenFlow enabled, it is Apache licensed and can be used for almost any purpose, it has good documentation and a very active community of professional developers who were able to resolve any issues that we needed help with.
 
 
 \section{Floodlight Architecture}
 \begin{itemize}
-\item OpenFlow – works with physical- and virtual- switches that speak the OpenFlow protocol
+\item \textbf{OpenFlow} –It works with both physical- and virtual- switches that support the OpenFlow protocol
 \item Offers a module loading system that make it simple to extend and enhance. 
 
-\item Open community – Floodlight is developed by an open community of developers. It welcomes code contributions from active participants and openly share information on project status, roadmap, bugs, etc.
+\item \textbf{Open community} – It being developed by an open community of developers, it welcomes code contributions from all active users and share information on project status, roadmap, bugs, etc.
 
-\item Easy to Use- Floodlight is drop dead simple to build and run. Read through the Documentation (link)
+\item \textbf{Easy to Use}- It provides with a documentation link, using which we can learn to use it according to our application
 
-\item Tested and Supported – Floodlight is the core of a commercial controller product from Big Switch Networks (link) and is actively tested and improved by a community of professional developers
-
+\item \textbf{Tested and Supported} – It is thoroughly tested by its community and is compatible with other frameworks.
 
 \end{itemize}
     
@@ -48,6 +48,7 @@ The differences with which sandbox mimics baadal architecture are:-
 
 
 \section{Inter-VLan Issues and Modifications suggested}
+In following subsections we will present the networking details of baadal sandbox with their limitations. We will suggest the modification based on which we derived our SDN solution. 
 
 \subsection{How do VMs communicate?
 }
@@ -128,24 +129,24 @@ normal l2-learning functionality.
 We find the following limitations in the present architecture.
 
 \begin{itemize}
-\item Inter-VALN or subnet routing In the above architecture, fake bridges are
+\item \textbf{Inter-VLAN or subnet routing} In the above architecture, fake bridges are
 used as the mean to enable this feature. The issue is when VMs in the
 same host but different subnet want to communicate. The packets have to
 go all the way upto NAT machine and come back. This seems unnecessary
 strain on the network and large latencies.
 
-\item  Controlling inter-VALN routing Currently, there is no way of turning VLAN
+\item  \textbf{Controlling inter-VLAN routing} Currently, there is no way of turning VLAN
 routing on or off in Baadal. It is enabled by default. A granular level control of this feature with the current network architecture seems non-trivial
 and difficult to implement
 
 
 
-\item Maximum number of VLANs This architecture has an upper boung of 255
+\item \textbf{Maximum number of VLANs} This architecture has an upper boung of 255
 VLANs because of the one to one correspondence between the subnets
 and the VLANs.
 
 
-\item Number of VMs in a VLAN The number of VMs in each VLAN in the cur-
+\item \textbf{Number of VMs in a VLAN} The number of VMs in each VLAN in the cur-
 rent implementation is upper bound at 255. This is when considering the
 addressing scheme of 192.168.x.y or 172.16.x.y with 255x255 addresses
 available.
